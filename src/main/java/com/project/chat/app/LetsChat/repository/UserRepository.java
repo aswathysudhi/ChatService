@@ -6,4 +6,6 @@ import com.project.chat.app.LetsChat.Data.UserDetails;
 
 public interface UserRepository extends JpaRepository<UserDetails, Integer> {
 
+
+    UserDetails findByName(String name);
 }

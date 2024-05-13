@@ -1,5 +1,6 @@
 package com.project.chat.app.LetsChat.service.Impl;
 
+import com.project.chat.app.LetsChat.Data.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,6 +34,11 @@ public class LoginServiceImpl implements LoginService {
 		LoginDetails user = loginDao.findByUsername(username);
         return user != null;
     }
+
+	@Override
+	public UserDetails getUserByName(String name) {
+		return loginDao.getUserByName(name);
+	}
 
 	@Override
 	public LoginDetails loadUserByUsername(String username, String password) {
