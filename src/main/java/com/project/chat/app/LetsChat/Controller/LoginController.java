@@ -2,19 +2,16 @@ package com.project.chat.app.LetsChat.Controller;
 
 import java.util.Collections;
 
+import com.project.chat.app.LetsChat.Data.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.project.chat.app.LetsChat.Data.LoginDetails;
 import com.project.chat.app.LetsChat.Model.AuthenticationRequest;
 import com.project.chat.app.LetsChat.Model.AuthenticationResponse;
 import com.project.chat.app.LetsChat.Util.JwtUtil;
-import com.project.chat.app.LetsChat.Util.TestUtil;
 import com.project.chat.app.LetsChat.service.LoginService;
 
 @RestController
@@ -22,6 +19,8 @@ public class LoginController {
  
 	@Autowired
 	LoginService userService;
+
+
 	@Autowired
     private JwtUtil jwtUtil;
 	
@@ -47,12 +46,10 @@ public class LoginController {
         userService.registerUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(Collections.singletonMap("message", "User Created"));
     }
-	
-	@Autowired
-	TestUtil t;
-	@PostMapping("/test")
-	public void testMethod() {
-		t.printfib(10);
+
+	@PostMapping("/getUser")
+	public UserDetails getUser(@RequestParam String name){
+		return userService.getUserByName(name);
 	}
 	
 }
