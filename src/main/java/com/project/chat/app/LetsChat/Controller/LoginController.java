@@ -12,7 +12,6 @@ import com.project.chat.app.LetsChat.Data.LoginDetails;
 import com.project.chat.app.LetsChat.Model.AuthenticationRequest;
 import com.project.chat.app.LetsChat.Model.AuthenticationResponse;
 import com.project.chat.app.LetsChat.Util.JwtUtil;
-import com.project.chat.app.LetsChat.Util.TestUtil;
 import com.project.chat.app.LetsChat.service.LoginService;
 
 @RestController
